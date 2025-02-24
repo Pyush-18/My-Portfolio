@@ -17,13 +17,15 @@ function CreateProject() {
 
    const addProject = async(e) => {
     e.preventDefault()
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("thumbnail", thumbnail)
+    formData.append("githubUrl", githubUrl)
+    formData.append("previewUrl", previewUrl)
+    console.log(formData)
     try {
-      const formData = new FormData()
-      formData.append("title", title)
-      formData.append("description", description)
-      formData.append("thumbnail", thumbnail)
-      formData.append("githubUrl", githubUrl)
-      formData.append("previewUrl", previewUrl)
+    
       const response = await axios.post(`${PROJECT_API_ENDPOINT}/add`, formData, {
         headers: {
             "Content-Type": "multipart/form-data"
