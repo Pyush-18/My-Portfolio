@@ -15,7 +15,6 @@ export const uploadImage = async(localFilePath) => {
         fs.unlinkSync(localFilePath)
         return response
     } catch (error) {
-        console.log(error)
         fs.unlinkSync(localFilePath)
         return null
     }

@@ -27,12 +27,10 @@ function AllProjects() {
     try {
       const response = await axios.get(`${PROJECT_API_ENDPOINT}/get`);
       if (response?.data?.success) {
-        console.log(response);
         dispatch(setProjects(response?.data?.user));
         toast.success(response?.data?.message);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message);
     }
   };

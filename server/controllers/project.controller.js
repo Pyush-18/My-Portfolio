@@ -24,7 +24,6 @@ export const addProject = asyncHandler(async (req, res) => {
   ) {
     throw new ApiError(400, "All fields are required");
   }
-
   const localFilePath = req.file?.path;
   if (!localFilePath) {
     throw new ApiError(400, "local file path is required");

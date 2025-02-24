@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "https://my-portfolio-mtfm.onrender.com",
+    origin: "https://get-placed-18lp.onrender.com",
     credentials: true
 }))
 

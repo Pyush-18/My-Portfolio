@@ -23,7 +23,6 @@ function CreateProject() {
     formData.append("thumbnail", thumbnail)
     formData.append("githubUrl", githubUrl)
     formData.append("previewUrl", previewUrl)
-    console.log(formData)
     try {
     
       const response = await axios.post(`${PROJECT_API_ENDPOINT}/add`, formData, {

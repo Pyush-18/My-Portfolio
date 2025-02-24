@@ -90,7 +90,6 @@ export const logoutUser = asyncHandler(async(req, res) => {
             new: true
         }
     )
-    console.log(user)
 
     const options = {
         httpOnly : true, 

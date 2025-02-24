@@ -17,7 +17,7 @@ function AdminNavbar() {
       const response = await axios.get(`${USER_API_ENDPOINT}/logout`, {
         withCredentials: true,
       });
-      console.log(response)
+      
       if (response?.data?.success) {
         dispatch(logout());
         dispatch(setAuthUser(null))
@@ -25,7 +25,6 @@ function AdminNavbar() {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error)
       toast.error(error?.response?.data?.message);
     }
   };

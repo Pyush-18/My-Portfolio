@@ -13,7 +13,6 @@ function AllSkills() {
     try {
       const response = await axios.get(`${SKILL_API_ENDPOINT}/get`);
       if (response?.data?.success) {
-        console.log(response);
         dispatch(setSkills(response?.data?.user));
         toast.success(response?.data?.message);
       }
