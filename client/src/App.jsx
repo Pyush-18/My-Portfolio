@@ -4,9 +4,10 @@ import AdminDashBoard from "./pages/Admin/AdminDashboard.jsx";
 import AdminSignup from "./pages/Admin/AdminSignup.jsx";
 import AdminLogin from "./pages/Admin/AdminLogin.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import useGetAllProject from "./hooks/useGetAllProject.jsx";
 
 export default function App() {
-  console.log(import.meta.env.VITE_API_CALL)
+  useGetAllProject()
   return (
     <BrowserRouter>
       <Routes>
