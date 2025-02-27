@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cookieParser())
 // process.env.CORS_ORIGIN
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://my-portfolio-mtfm.onrender.com",
     credentials: true
 }))
 
