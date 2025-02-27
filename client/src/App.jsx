@@ -6,6 +6,7 @@ import AdminLogin from "./pages/Admin/AdminLogin.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 export default function App() {
+  console.log(import.meta.env.VITE_API_CALL)
   return (
     <BrowserRouter>
       <Routes>
