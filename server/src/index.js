@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "https://get-placed-18lp.onrender.com",
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }))
 
