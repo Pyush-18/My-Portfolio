@@ -81,11 +81,11 @@ function AllProjects() {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center gap-5 text-white lg:h-[80vh] ">
+    <div className="flex justify-center items-center gap-5 text-white lg:h-[80vh] ">
       {projects.map((project) => (
         <div
           key={project?._id}
-          className="flex flex-col border-2 w-[80vw] lg:w-[30vw] rounded-lg p-2 gap-3"
+          className="flex flex-col border-2 w-[80vw] lg:w-[30vw]  rounded-lg p-2 gap-3"
         >
           <div className="flex flex-col  justify-between gap-5">
             <img
