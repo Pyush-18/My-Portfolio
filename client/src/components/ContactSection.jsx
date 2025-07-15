@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import axios from "axios"
 import { USER_API_ENDPOINT } from "../Api/Api.js";
 import toast from "react-hot-toast";
 function ContactSection() {
