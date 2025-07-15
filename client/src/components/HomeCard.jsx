@@ -7,7 +7,7 @@ function HomeCard() {
       <div data-aos="fade-up-right" className="flex flex-col gap-5 lg:w-[50%]">
         <h1 className="text-5xl pb-3 lg:text-7xl bg-gradient-to-r from-white  to-purple-600 to-30% bg-clip-text text-transparent">Hey!</h1>
         <p className="text-gray-300 text-xl lg:text-2xl">
-          My name is Piyush, a passionate 20-year-old MERN stack developer with
+          My name is Piyush, a passionate 20-year-old Fullstack developer with
           a deep enthusiasm for technology and innovation. I thrive on building
           dynamic web applications, solving complex problems, and continuously
           exploring the ever-evolving IT sector to stay ahead in the game.

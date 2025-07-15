@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import {Link} from "react-router-dom"
-function ContactSection() {
+function ContactSection() { 
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const handleSubmit = (e) => {
+    const {name, value} = e.target
+    console.log("contact section", e)
+    setFormData({...formData, [name]: value})
+    console.log(formData)
+  }
+
   return (
     <div data-aos="fade-left" className="flex flex-col lg:flex-row lg:items-center mb-20 lg:mb-36">
       <span className="uppercase text-3xl lg:text-2xl font-bold mb-8 lg:mb-0 rotate-0 lg:-rotate-90 bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text">
@@ -29,10 +42,11 @@ function ContactSection() {
           </h2>
         </div>
         <div>
-          <form className="flex flex-col p-3">
+          <form onSubmit={handleSubmit} className="flex flex-col p-3">
             <input
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
               type="text"
+              value={formData?.name}
               name="name"
               id="name"
               placeholder="Enter your name"
@@ -40,6 +54,7 @@ function ContactSection() {
             <input
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
               type="email"
+              value={formData?.email}
               name="email"
               id="email"
               placeholder="Enter your email"
@@ -47,6 +62,7 @@ function ContactSection() {
             <textarea
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
               name="message"
+              value={formData?.message}
               id="message"
               row="3"
               placeholder="Enter your message"
