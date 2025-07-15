@@ -5,7 +5,7 @@ import { USER_API_ENDPOINT } from "../Api/Api.js";
 import toast from "react-hot-toast";
 function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
+    subject: "",
     email: "",
     message: "",
   });
@@ -27,6 +27,7 @@ function ContactSection() {
         toast.success(response?.data?.message);
       }
     } catch (error) {
+      console.log(error)
       toast.error(error?.response?.data?.message || "Message not sent");
     } finally {
       setLoader(false);
@@ -72,10 +73,10 @@ function ContactSection() {
             <input
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
               type="text"
-              value={formData?.name}
-              name="name"
-              id="name"
-              placeholder="Enter your name"
+              value={formData?.subject}
+              name="subject"
+              id="subject"
+              placeholder="Enter your subject"
               onChange={handleChange}
             />
             <input

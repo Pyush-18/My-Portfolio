@@ -119,7 +119,7 @@ export const getAuthUser = asyncHandler(async(req , res) => {
 })
 
 export const contactMe = asyncHandler(async(req, res) => {
-    const {name, email, message} = req.body
+    const {subject, email, message} = req.body
     const sendMsg = await sendMessage({name, email, message})
     if(!sendMsg){
         throw new ApiError(400, "Error while sending the message")
