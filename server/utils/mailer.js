@@ -1,7 +1,7 @@
 import { createTransport } from "nodemailer";
 import { ApiError } from "./ApiError.js";
 
-export async function sendMessage({ name, email, message }) {
+export async function sendMessage({ subject, email, message }) {
   const transporter = createTransport({
     service: "gmail",
     auth: {
@@ -13,7 +13,7 @@ export async function sendMessage({ name, email, message }) {
     const data = await transporter.sendMail({
       from: email,
       to: process.env.APP_EMAIL,
-      subject: `${name} 😎`,
+      subject: `${subject} 😎`,
       text: message,
     });
     return data;
