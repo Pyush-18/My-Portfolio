@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import {Link} from "react-router-dom"
+import { USER_API_ENDPOINT } from "../Api/Api.js";
+import toast from "react-hot-toast";
 function ContactSection() { 
 
   const [formData, setFormData] = useState({
@@ -8,10 +10,23 @@ function ContactSection() {
     email: "",
     message: "",
   })
+  const [loader, setLoader] = useState(false)
   const handleSubmit = (e) => {
+    e.preventDefault()
     const {name, value} = e.target
     console.log("contact section", e)
     setFormData({...formData, [name]: value})
+    setLoader(true)
+    try {
+      const response = axios.post(`${USER_API_ENDPOINT}/contact`, { ...formData })
+      if(response?.data?.success){
+        toast.success(response?.data?.message)
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Message not sent")
+    }finally{
+      setLoader(false)
+    }
     console.log(formData)
   }
 
@@ -67,7 +82,10 @@ function ContactSection() {
               row="3"
               placeholder="Enter your message"
             />
-            <button type="submit" className="px-3 py-2 text-lg lg:text-2xl bg-purple-500 hover:bg-purple-600 border font-bold text-white rounded-lg">Send Message</button>
+            <button disabled={loader} type="submit" className="px-3 py-2 text-lg lg:text-2xl bg-purple-500 hover:bg-purple-600 border font-bold text-white rounded-lg"
+            >
+              Send Message
+            </button>
           </form>
         </div>
       </div>
