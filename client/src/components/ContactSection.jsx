@@ -1,37 +1,44 @@
 import { useState } from "react";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { USER_API_ENDPOINT } from "../Api/Api.js";
 import toast from "react-hot-toast";
-function ContactSection() { 
-
+function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [loader, setLoader] = useState(false)
+  });
+  const [loader, setLoader] = useState(false);
+
+  const handleChange = () => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const {name, value} = e.target
-    console.log("contact section", e)
-    setFormData({...formData, [name]: value})
-    setLoader(true)
+    e.preventDefault();
+    setLoader(true);
     try {
-      const response = axios.post(`${USER_API_ENDPOINT}/contact`, { ...formData })
-      if(response?.data?.success){
-        toast.success(response?.data?.message)
+      const response = axios.post(`${USER_API_ENDPOINT}/contact`, {
+        ...formData,
+      });
+      if (response?.data?.success) {
+        toast.success(response?.data?.message);
       }
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Message not sent")
-    }finally{
-      setLoader(false)
+      toast.error(error?.response?.data?.message || "Message not sent");
+    } finally {
+      setLoader(false);
     }
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   return (
-    <div data-aos="fade-left" className="flex flex-col lg:flex-row lg:items-center mb-20 lg:mb-36">
+    <div
+      data-aos="fade-left"
+      className="flex flex-col lg:flex-row lg:items-center mb-20 lg:mb-36"
+    >
       <span className="uppercase text-3xl lg:text-2xl font-bold mb-8 lg:mb-0 rotate-0 lg:-rotate-90 bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text">
         Get Started
       </span>
@@ -49,8 +56,12 @@ function ContactSection() {
             </Link>
           </div>
           <div className="flex gap-2 mt-10">
-            <Link to=""><AiFillLinkedin className="text-white text-2xl" /></Link>
-            <Link to="https://github.com/Pyush-18" target="_blank"><AiFillGithub className="text-white text-2xl" /></Link>
+            <Link to="">
+              <AiFillLinkedin className="text-white text-2xl" />
+            </Link>
+            <Link to="https://github.com/Pyush-18" target="_blank">
+              <AiFillGithub className="text-white text-2xl" />
+            </Link>
           </div>
           <h2 className="text-2xl lg:hidden font-bold font-mono text-white text-center">
             OR
@@ -65,6 +76,7 @@ function ContactSection() {
               name="name"
               id="name"
               placeholder="Enter your name"
+              onChange={handleChange}
             />
             <input
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
@@ -73,6 +85,7 @@ function ContactSection() {
               name="email"
               id="email"
               placeholder="Enter your email"
+              onChange={handleChange}
             />
             <textarea
               className="bg-transparent p-3 outline-none border focus:border-purple-500 focus:pl-8 transition-all duration-100 rounded-lg border-white font-mono text-lg lg:text-2xl mb-5 lg:mb-10 w-full lg:w-[30vw] bg-gradient-to-r from-white to-purple-500 text-transparent bg-clip-text "
@@ -81,8 +94,12 @@ function ContactSection() {
               id="message"
               row="3"
               placeholder="Enter your message"
+              onChange={handleChange}
             />
-            <button disabled={loader} type="submit" className="px-3 py-2 text-lg lg:text-2xl bg-purple-500 hover:bg-purple-600 border font-bold text-white rounded-lg"
+            <button
+              disabled={loader}
+              type="submit"
+              className="px-3 py-2 text-lg lg:text-2xl bg-purple-500 hover:bg-purple-600 border font-bold text-white rounded-lg"
             >
               Send Message
             </button>
